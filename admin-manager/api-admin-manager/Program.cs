@@ -1,3 +1,4 @@
+using AccessData.Generico;
 using AccessData.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -16,7 +17,8 @@ builder.Services.AddDbContext<BdInfraccionesContext>(
         options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
     });
 
-
+builder.Services.AddScoped<UnitOfWork>();
+builder.Services.AddScoped<RepositorioCamara>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
